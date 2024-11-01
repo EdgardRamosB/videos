@@ -1,5 +1,5 @@
 async function listaVideos(){
-    const conexion = await fetch("http://localhost:3001/videos",{
+    const conexion = await fetch("https://videos-five-brown.vercel.app/videos",{
         method:"GET",
         headers:{
         "Content-type":"application/json"
@@ -13,7 +13,7 @@ async function listaVideos(){
 }
 
 async function crearVideo(titulo,descripcion,url,imagen){
-    const conexion= await fetch("http://localhost:3001/videos",{
+    const conexion= await fetch("https://videos-five-brown.vercel.app/videos",{
     method:"POST",
     headers:{
         "Content-type":"application/json"
@@ -34,7 +34,7 @@ async function crearVideo(titulo,descripcion,url,imagen){
 }
 
 async function buscarVideo(referencia){
-    const conexion=await fetch(`http://localhost:3001/videos?q=${referencia}`)
+    const conexion=await fetch(`https://videos-five-brown.vercel.app/videos${referencia}`)
     const conexionConvertida=conexion.json();
 
     return conexionConvertida;
