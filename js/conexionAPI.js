@@ -25,7 +25,7 @@ async function enviarVideo(titulo, descripcion, url, imagen) {//para cargar imag
 }
 
 async function buscarVideos(palabraClave) {
-    const conexion = await fetch (`https://videos-five-brown.vercel.app/videos${palabraClave}`);
+    const conexion = await fetch (`https://videos-five-brown.vercel.app/videos/${palabraClave}`);
     const conexionConvertida =  conexion.json();
     return conexionConvertida
 }
