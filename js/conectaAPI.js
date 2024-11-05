@@ -34,7 +34,7 @@ async function crearVideo(titulo,descripcion,url,imagen){
 }
 
 async function buscarVideo(referencia){
-    const conexion=await fetch(`https://videos-five-brown.vercel.app/videos${referencia}`)
+    const conexion=await fetch(`https://videos-five-brown.vercel.app/videos/${referencia}`)
     const conexionConvertida=conexion.json();
 
     return conexionConvertida;
