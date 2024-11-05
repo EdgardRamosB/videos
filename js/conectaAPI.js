@@ -41,13 +41,15 @@ async function crearVideo(titulo,descripcion,url,imagen){
     }
 }
 
-async function buscarVideo(referencia){
-    const conexion=await fetch(`https://videos-five-brown.vercel.app/videos/${referencia}`)
-    const conexionConvertida=conexion.json();
+async function buscarVideo(referencia) {
+    const conexion = await fetch(`https://videos-five-brown.vercel.app/videos/${referencia}`);
+    const conexionConvertida = await conexion.json(); // Asegúrate de esperar a que la promesa se resuelva
 
-    return conexionConvertida;
-}
-
-export const conectaAPI={
-    listaVideos,crearVideo,buscarVideo
+    // Si la respuesta de la API es un array, devuelve el array
+    if (Array.isArray(conexionConvertida)) {
+        return conexionConvertida;
+    } else {
+        // Si la respuesta de la API no es un array, devuelve un array vacío
+        return [];
+    }
 }
