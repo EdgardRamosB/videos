@@ -39,18 +39,15 @@ async function crearVideo(titulo,descripcion,url,imagen){
         // Mostrar un mensaje de error al usuario
         alert("No fue posible enviar el video. Por favor, inténtalo de nuevo más tarde.");
     }
-    
 }
 
-async function buscarVideo(referencia) {
-    const conexion = await fetch(`https://videos-five-brown.vercel.app/videos/${referencia}`);
-    const conexionConvertida = await conexion.json(); // Asegúrate de esperar a que la promesa se resuelva
+async function buscarVideo(referencia){
+    const conexion=await fetch(`https://videos-five-brown.vercel.app/videos/${referencia}`)
+    const conexionConvertida=conexion.json();
 
-    // Si la respuesta de la API es un array, devuelve el array
-    if (Array.isArray(conexionConvertida)) {
-        return conexionConvertida;
-    } else {
-        // Si la respuesta de la API no es un array, devuelve un array vacío
-        return [];
-    }
+    return conexionConvertida;
+}
+
+export const conectaAPI={
+    listaVideos,crearVideo,buscarVideo
 }
