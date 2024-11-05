@@ -13,24 +13,32 @@ async function listaVideos(){
 }
 
 async function crearVideo(titulo,descripcion,url,imagen){
-    const conexion= await fetch("https://videos-five-brown.vercel.app/videos",{
-    method:"POST",
-    headers:{
-        "Content-type":"application/json"
-    },
-    body:JSON.stringify({
-        titulo:titulo,
-        descripcion:`${descripcion} mil visualizaciones`,
-        url:url,
-        imagen:imagen
-    })
-    })
-    if(!conexion.ok){
-        throw new Error("No fue posible enviar el video");
-    }
-    const conexionConvertida = await conexion.json();
+    try {
+        const conexion= await fetch("https://videos-five-brown.vercel.app/videos",{
+            method:"POST",
+            headers:{
+                "Content-type":"application/json"
+            },
+            body:JSON.stringify({
+                titulo:titulo,
+                descripcion:`${descripcion} mil visualizaciones`,
+                url:url,
+                imagen:imagen
+            })
+        });
 
-    return conexionConvertida;
+        if (!conexion.ok) {
+            throw new Error(`Error al crear el video: ${conexion.status}`);
+        }
+
+        const conexionConvertida = await conexion.json();
+
+        return conexionConvertida;
+    } catch (error) {
+        console.error(error);
+        // Mostrar un mensaje de error al usuario
+        alert("No fue posible enviar el video. Por favor, inténtalo de nuevo más tarde.");
+    }
 }
 
 async function buscarVideo(referencia){
