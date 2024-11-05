@@ -39,6 +39,7 @@ async function crearVideo(titulo,descripcion,url,imagen){
         // Mostrar un mensaje de error al usuario
         alert("No fue posible enviar el video. Por favor, inténtalo de nuevo más tarde.");
     }
+    
 }
 
 async function buscarVideo(referencia){
