@@ -9,7 +9,7 @@ async function crearVideo(evento){
     const imagen= document.querySelector("[data-imagen]").value;
     const url = document.querySelector("[data-url]").value;
     const titulo=document.querySelector("[data-titulo]").value;
-    const descripcion = Math.floor(Math.random() * 10).toString(); // Corrección: Math.random()
+    const descripcion = Math.floor(Math.random*10).toString();
 
     try{
         await conectaAPI.crearVideo(titulo,descripcion,url,imagen)
@@ -20,4 +20,4 @@ async function crearVideo(evento){
     }
 }
 
-formulario.addEventListener("submit",evento=>crearVideo(evento));
+formulario,addEventListener("submit",evento=>crearVideo(evento));
