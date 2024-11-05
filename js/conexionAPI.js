@@ -1,12 +1,12 @@
 async function listarVideos() {
-    const conexion = await fetch("https://videos-five-brown.vercel.app/videos");
+    const conexion = await fetch("http://localhost:3001/videos");
     const conexionConvertida = conexion.json();
     //console.log(conexionConvertida);
     return conexionConvertida
 }
 
 async function enviarVideo(titulo, descripcion, url, imagen) {//para cargar imagenes de forma automatica, luego creamos un nuevo archivo para poder pasar los parametros
-    const conexion = await fetch("https://videos-five-brown.vercel.app/videos", {
+    const conexion = await fetch("http://localhost:3001/videos", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
@@ -25,7 +25,7 @@ async function enviarVideo(titulo, descripcion, url, imagen) {//para cargar imag
 }
 
 async function buscarVideos(palabraClave) {
-    const conexion = await fetch (`https://videos-five-brown.vercel.app/videos/${palabraClave}`);
+    const conexion = await fetch (`http://localhost:3001/videos?q=${palabraClave}`);
     const conexionConvertida =  conexion.json();
     return conexionConvertida
 }
