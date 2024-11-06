@@ -1,5 +1,5 @@
-import { conectaAPI } from "./conectaAPI.js";
-
+//import { conectaAPI } from "./conectaAPI.js";
+import { conexionAPI } from "./conecxionAPI.js";
 const formulario = document.querySelector("[data-formulario]");
 
 //validaciones
@@ -12,8 +12,7 @@ async function crearVideo(evento){
     const descripcion = Math.floor(Math.random*10).toString();
 
     try{
-        await conectaAPI.crearVideo(titulo,descripcion,url,imagen)
-    
+        await conexionAPI.enviarVideo(titulo,descripcion,url,imagen)
         window.location.href="../pages/envio-concluido.html"
     }catch(e){
         alert(e);
