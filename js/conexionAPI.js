@@ -4,24 +4,30 @@ async function listarVideos() {
     //console.log(conexionConvertida);
     return conexionConvertida
 }
+async function enviarVideo(titulo, descripcion, url, imagen) {
+    try {
+        const conexion = await fetch("https://videos-five-brown.vercel.app/videos", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({
+                titulo: titulo,
+                descripcion: `${descripcion} mil visualizaciones`,
+                url: url,
+                imagen: imagen
+            })
+        });
 
-async function enviarVideo(titulo, descripcion, url, imagen) {//para cargar imagenes de forma automatica, luego creamos un nuevo archivo para poder pasar los parametros
-    const conexion = await fetch("https://videos-five-brown.vercel.app/videos", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-            titulo: titulo,
-            descripcion: `${descripcion} mil visualizaciones`,
-            url: url,
-            imagen: imagen
-        })
-    });
-    const conexionConvertida = conexion.json(); // Esperar a que la promesa se resuelva
-    if (!conexion.ok){
-        throw new Error ("ha ocurrido un error al enviar video");
+        if (!conexion.ok) {
+            throw new Error("Ha ocurrido un error al enviar el video");
+        }
+
+        const conexionConvertida = await conexion.json(); // Esperar a que la promesa se resuelva
+        return conexionConvertida;
+    } catch (error) {
+        console.error("Error al enviar el video:", error);
+        // Mostrar un mensaje de error al usuario
+        alert("Ha ocurrido un error al enviar el video. Por favor, inténtalo de nuevo más tarde.");
     }
-
-    return conexionConvertida;
 }
 
 async function buscarVideos(palabraClave) {
