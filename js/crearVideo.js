@@ -1,5 +1,5 @@
 //import { conectaAPI } from "./conectaAPI.js";
-import { conexionAPI } from "./conecxionAPI.js";
+import { conexionAPI } from "./conexionAPI.js";
 const formulario = document.querySelector("[data-formulario]");
 
 //validaciones
